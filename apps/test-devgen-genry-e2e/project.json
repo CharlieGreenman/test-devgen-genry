@@ -1,0 +1,29 @@
+{
+  "name": "test-devgen-genry-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/test-devgen-genry-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/test-devgen-genry-e2e/cypress.json",
+        "devServerTarget": "test-devgen-genry:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "test-devgen-genry:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/test-devgen-genry-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["test-devgen-genry"]
+}
